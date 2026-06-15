@@ -7,3 +7,8 @@ This was a project I made, for fun, mainly because I wanted to practice AI, and 
 <p>        <br></p>
 The AI can only recognize numbers from 0 to 9, although I eventually plan to make it recognize letters, and then recognize full sentences and paragraphs like this.  
 It uses a Convolutional Neural Network(CNN), followed by a dense MLP in order to analyze and process them.  A softmax function is then applied to output its classifications.  
+
+<p>Also, I plan on this being my first REPO to have a release.  
+  I will add the releases soon, as both its ZIP, and its EXE, 
+  which contain the model's pth and the program for interacting with it.  The .py file for its code, OCR_Model.py isn't really necessary to include in releases,
+  as it only creates the pth file, which is already included.  If you want to interact with its code and change it, I will include a version of the release with that file.</p>
