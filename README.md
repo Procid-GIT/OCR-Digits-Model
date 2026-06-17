@@ -1,5 +1,5 @@
 # OCR-Model
-Simple OCR for recognizing numbers and digits as of now.
+Simple OCR for recognizing just individual characters as of now.
 ![alt text](image.png)
 ![alt text](image-1.png)
 _______________________________
