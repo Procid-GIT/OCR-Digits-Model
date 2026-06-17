@@ -91,6 +91,6 @@ if __name__ == "__main__":
 
     print(f"[{datetime.now()}][Status] Training Done")
     print(f"[{datetime.now()}][Info] Saving Model to disk...")
-    torch.save(model, "OCR_Model.pth")
+    torch.save(model.state_dict(), "OCR_Model.pt")
     print(f"[{datetime.now()}][Status] Done! Exiting program...")
     exit(0)
