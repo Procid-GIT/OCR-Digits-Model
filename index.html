@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <script src="script.js" defer></script>
+    </head>
+    <body>
+        <h1>AI OCR Model Recognition</h1>
+        <p>Put images of individual characters here(eg. A, 1, F, g), in order to submit them to the AI to recognize it.</p>
+        <form id="submit" action="/api/predict" method="post" enctype="multipart/form-data">
+            <div>
+                <label>Input images of Chars(Characters) here <br> </label>
+                <input type="file" id="imageUpload" name="aiImage" accept="image/*" required>
+            </div>
+            <p><br></p>
+            <button type="submit">Predict!</button>
+        </form>
+    </body>
+</html>
