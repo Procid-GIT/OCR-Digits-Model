@@ -1,0 +1,92 @@
+@import url('https://googleapis.com');
+
+body {
+  font-family: 'Google Sans', sans-serif;
+  background-color: rgb(46, 33, 55);
+  color: white;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+}
+
+h1 {
+    size: 40px;
+    font-family: 'Google Sans', sans-serif;
+    text-align: center;
+    color: rgb(110, 186, 247);
+}
+
+#desc {
+    color: #9ad7f8;
+    padding: 20px;
+    background-color: #4d3658;
+    border-radius: 15px;
+    margin: 15px;
+}
+
+.container {
+    padding: 20px;
+    margin: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.upload {
+    padding: 10px;
+    border-radius: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
+    background-color: rgb(82, 54, 97);
+    color:rgb(251, 70, 70);
+}
+
+.upload:hover {
+    background-color: #ff0000;
+    color: white;
+}
+
+#imageUpload {
+    display: none;
+}
+
+#sub {
+    border: none;
+    border-radius: 20px;
+    background-color: rgb(108, 60, 124);
+    color: rgb(253, 83, 83);
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+#sub:hover {
+    background-color: rgb(233, 78, 78);
+    color: white;
+}
+
+.header {
+    background-color: rgb(110, 50, 130);
+    padding: 10px;
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+}
+
+.out-zone {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#output {
+    padding: 20px;
+    background-color:#4d3658;
+    border-radius: 20px;
+    color:#9ad7f8;
+}
+
+.error {
+    color: #f54040;
+}

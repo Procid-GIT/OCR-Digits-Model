@@ -3,18 +3,23 @@
     <head>
         <link rel="stylesheet" href="style.css">
         <script src="script.js" defer></script>
+        <div class="header">
+            <h1>AI OCR Model Recognition</h1>
+        </div>
     </head>
     <body>
-        <h1>AI OCR Model Recognition</h1>
-        <p>Put images of individual characters here(eg. A, 1, F, g), in order to submit them to the AI to recognize it.</p>
+        <p id="desc">Put images of individual characters here(eg. A, 1, F, g), in order to submit them to the AI to recognize it.</p>
         <form id="submit" action="/api/predict" method="post" enctype="multipart/form-data">
-            <div>
-                <label>Input images of Chars(Characters) here <br> </label>
-                <input type="file" id="imageUpload" name="aiImage" accept="image/*" required>
+            <div class="container">
+                <div class="upload">
+                    <label>Upload<br> </label>
+                    <input type="file" id="imageUpload" name="aiImage" accept="image/*" required>
+                </div>
             </div>
-            <p><br></p>
             <button type="submit" id="sub">Predict!</button>
         </form>
-        <p id="output"></p>
+        <div class="out-zone">    
+            <p id="output">No output yet...</p>
+        </div>
     </body>
 </html>
