@@ -41,6 +41,7 @@ async function processOCR(e) {
     } catch (error) {
         console.error("Connection Error: ", error);
         output.textContent=("Sorry, unable to send, error.");
+        output.classList.add('error');
     } finally {
         if (btn) btn.disabled = false;
     }

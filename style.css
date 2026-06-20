@@ -1,12 +1,23 @@
 @import url('https://googleapis.com');
 
+@keyframes initial_load {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 body {
-  font-family: 'Google Sans', sans-serif;
-  background-color: rgb(46, 33, 55);
-  color: white;
-  text-align: center;
-  padding: 0;
-  margin: 0;
+    font-family: 'Google Sans', sans-serif;
+    background-color: rgb(33, 36, 55);
+    color: white;
+    text-align: center;
+    padding: 0;
+    margin: 0;
 }
 
 h1 {
@@ -17,11 +28,14 @@ h1 {
 }
 
 #desc {
+    opacity: 0;
     color: #9ad7f8;
     padding: 20px;
-    background-color: #4d3658;
+    background-color:#493757;
     border-radius: 15px;
     margin: 15px;
+    animation: initial_load 1.2s ease-out forwards;
+    animation-delay: 0.2s;
 }
 
 .container {
@@ -33,52 +47,64 @@ h1 {
 }
 
 .upload {
+    opacity: 0;
     padding: 5px;
     color:#9ad7f8;
+    animation: initial_load 1.2s ease-out forwards;
+    animation-delay: 0.5s;
 }
 
 .upload > p {
     padding: 5px;
     margin-bottom: 10px;
     color:#9ad7f8;
+    animation: initial_load 1.7s ease-out forwards;
+    animation-delay: 0.2s;
 }
 
 #imageUpload {
     padding-left: 10px;
+    margin-left: 5px;
 }
 
 #imageUpload::file-selector-button {
     padding: 10px;
     border-radius: 20px;
-    padding-left: 40px;
-    padding-right: 40px;
-    background-color: rgb(82, 54, 97);
+    padding-left: 25px;
+    padding-right: 25px;
+    margin-right: 20px;
+    background-color: rgb(150, 100, 194);
     border: none;
-    color:rgb(251, 70, 70);
+    color:rgb(8, 0, 0);
+    font-size: 15px;
+    transition: background-color 1s ease, transform 1s ease;
 }
 
 #imageUpload::file-selector-button:hover {
-    background-color: #ff0000;
-    color: white;
+    background-color: rgb(246, 125, 125);
+    color: #000000;
+    transform: scale(1.05)
 }
 
 #sub {
     border: none;
     border-radius: 20px;
-    background-color: rgb(108, 60, 124);
-    color: rgb(253, 83, 83);
+    background-color: rgb(220, 86, 86);
+    color: rgb(0, 0, 0);
     padding: 10px;
     padding-left: 20px;
     padding-right: 20px;
+    transition: background-color 1s ease, transform 1s ease;
 }
 
 #sub:hover {
-    background-color: rgb(233, 78, 78);
-    color: white;
+    background-color: rgb(235, 138, 138);
+    color: rgb(0, 0, 0);
+    transform: scale(1.05)
 }
 
 .header {
-    background-color: rgb(110, 50, 130);
+    background-color: rgb(127, 68, 147);
     padding: 10px;
     background-size: cover;
     background-position: center;
@@ -94,7 +120,7 @@ h1 {
 
 #output {
     padding: 20px;
-    background-color:#4d3658;
+    background-color:#493757;
     border-radius: 20px;
     color:#9ad7f8;
 }
