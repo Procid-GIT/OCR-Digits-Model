@@ -21,10 +21,16 @@ class OCRModel(nn.Module):
             nn.ReLU(),
             nn.MaxPool2d(kernel_size=2, stride=2),
             nn.Dropout2d(0.25),
+            # === Final Block === 
+            nn.Conv2d(in_channels=64, out_channels=128, kernel_size=3, stride=1, padding=1),
+            nn.BatchNorm2d(128),
+            nn.ReLU(),
+            nn.MaxPool2d(kernel_size=2, stride=2, padding=1), # Padding=1 handles odd 7x7 dimensions cleanly
+            nn.Dropout2d(0.25),
             # === Linear Flatten ===
             nn.Flatten(),
 
-            nn.Linear(64 * 7 * 7, 256),
+            nn.Linear(128 * 7 * 7, 256),
             nn.BatchNorm1d(256),
             nn.ReLU(),
             nn.Dropout(0.5),
