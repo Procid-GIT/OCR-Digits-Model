@@ -30,7 +30,7 @@ class OCRModel(nn.Module):
             # === Linear Flatten ===
             nn.Flatten(),
 
-            nn.Linear(128 * 7 * 7, 256),
+            nn.Linear(2048, 256),
             nn.BatchNorm1d(256),
             nn.ReLU(),
             nn.Dropout(0.5),
