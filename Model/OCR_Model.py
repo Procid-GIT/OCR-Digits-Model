@@ -12,21 +12,35 @@ class OCRModel(nn.Module):
         self.stack = nn.Sequential(
             # === FIRST BLOCK ====
             nn.Conv2d(in_channels=1, out_channels=32, kernel_size=3, stride=1, padding=1),
+            nn.BatchNorm2d(32),
             nn.ReLU(),
             nn.MaxPool2d(kernel_size=2, stride=2),
             # === NEXT BLOCK ====
             nn.Conv2d(in_channels=32, out_channels=64, kernel_size=3, stride=1, padding=1),
+            nn.BatchNorm2d(64),
             nn.ReLU(),
             nn.MaxPool2d(kernel_size=2, stride=2),
+            nn.Dropout2d(0.25),
+            # === Final Block === 
+            nn.Conv2d(in_channels=64, out_channels=128, kernel_size=3, stride=1, padding=1),
+            nn.BatchNorm2d(128),
+            nn.ReLU(),
+            nn.MaxPool2d(kernel_size=2, stride=2, padding=1), # Padding=1 handles odd 7x7 dimensions cleanly
+            nn.Dropout2d(0.25),
             # === Linear Flatten ===
             nn.Flatten(),
-            nn.Linear(64 * 7 * 7, 128),
+
+            nn.Linear(2048, 256),
+            nn.BatchNorm1d(256),
             nn.ReLU(),
-            nn.Linear(128, 128),
+            nn.Dropout(0.5),
+
+            nn.Linear(256, 128),
+            nn.BatchNorm1d(128),
             nn.ReLU(),
-            nn.Linear(128, 64),
-            nn.ReLU(),
-            nn.Linear(64, 47)
+            nn.Dropout(0.3),
+
+            nn.Linear(128, 47)
         )
     
     def forward(self, x):
@@ -36,9 +50,14 @@ if __name__ == "__main__":
 
     print(f"[{datetime.now()}][Info] Setting data transformation Formula... ")
     # AI model training retrieval
+    train_transform = transforms.Compose([
+        transforms.RandomRotation(degrees=10, fill=0),       # Small rotation for variations
+        transforms.RandomAffine(degrees=0, translate=(0.08, 0.08), fill=0), # Handles poor centering
+        transforms.ToTensor(),
+        transforms.Normalize((0.1751,), (0.3332,))
+    ])
     transform = transforms.Compose([
         transforms.ToTensor(),
-        transforms.Lambda(lambda x: x.transpose(1, 2)),
         transforms.Normalize((0.1751,), (0.3332,))
     ])
 
@@ -48,8 +67,9 @@ if __name__ == "__main__":
         split='balanced',
         train=True,
         download=True,
-        transform=transform
+        transform=train_transform
     )
+
 
     print(f"[{datetime.now()}][Status] Done, preparing data for training...")
     train_loader = DataLoader(dataset=train_dataset, batch_size = 64, shuffle=True, num_workers=0, pin_memory=True)
@@ -94,3 +114,5 @@ if __name__ == "__main__":
     torch.save(model.state_dict(), "OCR_Model.pt")
     print(f"[{datetime.now()}][Status] Done! Exiting program...")
     exit(0)
+
+# TODO: Retrain model after adding new layer
