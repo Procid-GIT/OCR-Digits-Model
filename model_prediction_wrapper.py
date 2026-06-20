@@ -48,7 +48,7 @@ def predict():
                 transforms.ToTensor(),
                 transforms.Normalize(mean=(0.1751,), std=(0.3332,))
             ])
-            
+
             x = transform(image).unsqueeze(0)
 
             print(f"[AI] AI is thinking...")
@@ -57,8 +57,8 @@ def predict():
 
             print(f"[AI] Decoding prediction...")
             predicted_digit, conf = prediction_decode(predicted)
-            result.value = f"I feel {conf:.2f}% confident that I saw the digit {predicted_digit}"
-            print(f"[AI] I feel {conf:.2f}% confident that I read the digit {predicted_digit}")
+            result.value = f"I feel {conf:.2f}% confident that I saw the character {predicted_digit}"
+            print(f"[AI] I feel {conf:.2f}% confident that I read the character {predicted_digit}")
         except Exception as e:
             result.value = f"Error :/"
             print(f"[Error] {e}")
