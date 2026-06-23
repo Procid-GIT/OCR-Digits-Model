@@ -129,6 +129,30 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
+}
+
+.copy-to-clipboard {
+    padding: 20px;
+}
+
+.copy {
+    padding: 10px;
+    background-color:#f56868;
+    border: none;
+    border-radius: 20px;
+    color: #000000;
+    transition: background-color 1s ease, transform 1s ease;
+    animation: initial_load 1.2s ease-out forwards;
+    animation-delay: 0.1s;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.copy:hover {
+    background-color: #ef8d8d;
+    color: #000000;
+    transform: scale(1.5);
 }
 
 #output {
