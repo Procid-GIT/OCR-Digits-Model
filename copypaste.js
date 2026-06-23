@@ -5,7 +5,7 @@ cbutton.addEventListener('click', copytoClipboard);
 
 async function copytoClipboard() {
     const intext = output.innerText;
-    const txt = intext.slice(49, 50);
+    const txt = intext.slice(51, 52);
 
     try{
         await navigator.clipboard.writeText(txt);
