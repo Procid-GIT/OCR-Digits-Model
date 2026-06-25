@@ -1,4 +1,4 @@
-# OCR Model
+# Lightweight and Fast OCR Model made in Pytorch trained on EMNIST database
 Simple OCR for recognizing just individual characters as of now, that I made.
 ![alt text](image.png)
 ![alt text](image-1.png)
