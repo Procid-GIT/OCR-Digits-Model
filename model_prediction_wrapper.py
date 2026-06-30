@@ -29,25 +29,20 @@ import cv2
 import numpy as np
 
 def prepare_for_emnist(char_crop):
-    # 1. Get current crop dimensions
     char_np = np.array(char_crop)
     char_np = np.where(char_np > 50, 255, 0).astype(np.uint8)
     char_crop = Image.fromarray(char_np)
 
+    # 2. Get width and height directly using PIL's .size (No .shape error!)
+    w, h = char_crop.size
+    max_dim = max(w, h) + 4
+    
+    # 3. Create a perfect black square canvas
+    square_img = Image.new('L', (max_dim, max_dim), 0)
+    square_img.paste(char_crop, ((max_dim - w) // 2, (max_dim - h) // 2))
 
-    h, w = char_crop.size
-    max_side = max(h, w)
-    
-    # 2. Create a perfect black square canvas based on the largest side
-    square_canvas = np.zeros((max_side, max_side), dtype=np.uint8)
-    
-    # 3. Center the letter right in the middle (prevents stretching!)
-    offset_y = (max_side - h) // 2
-    offset_x = (max_side - w) // 2
-    square_canvas[offset_y:offset_y+h, offset_x:offset_x+w] = char_crop
-    
-    # 4. Safely resize the proportional square down to EMNIST's 28x28
-    return cv2.resize(square_canvas, (28, 28))
+    # 4. Resize down to exactly 28x28 for the PyTorch model
+    return square_img.resize((28, 28), Image.Resampling.BILINEAR)
 
 
 def slice_sentences():
